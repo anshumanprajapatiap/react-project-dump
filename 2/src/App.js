@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import TaskList from './components/TaskList';
+import { Header } from './components/Header';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header/>
       <TaskList
         tasks={tasks}
         handleComplete={handleComplete}

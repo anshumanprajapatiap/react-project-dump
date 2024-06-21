@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import '../App.css';
+import { TaskCard } from './TaskCard';
 
 function TaskList({ tasks, handleComplete, handleInComplete, handleDelete, handleAdd }) {
   const [show, setShow] = useState(true); // Initial state for show toggle
@@ -38,15 +38,12 @@ function TaskList({ tasks, handleComplete, handleInComplete, handleDelete, handl
       <button onClick={() => setShow(!show)} className='trigger'>{show ? "Hide" : "Show"}</button>
       <ul>
         {show && tasks.map((task) => (
-          <li key={task.id} className={task.completed ? "completed" : "incompleted"}>
-            <span>{task.id} - {task.name}</span>
-            {task.completed ? (
-              <button onClick={() => handleInComplete(task.id)} className='markdone'>Mark Incomplete</button>
-            ) : (
-              <button onClick={() => handleComplete(task.id)} className='markdone'>Mark Done</button>
-            )}
-            <button onClick={() => handleDelete(task.id)} className='delete'>Delete</button>
-          </li>
+          <TaskCard key={task.id}  
+          task={task}
+          handleComplete={handleComplete}
+          handleInComplete={handleInComplete}
+          handleDelete={handleDelete}
+           />
         ))}
       </ul>
       {/* Input fields for adding new task */}
